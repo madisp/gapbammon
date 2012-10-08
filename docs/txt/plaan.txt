@@ -1,0 +1,29 @@
+08.10
+
+write schedule
+acquire domain knowledge (backgammon rules and playing experience)
+storyboard
+write project requirements and aims
+infrastructure setup
+
+09.10
+
+class diagram
+code
+
+10.10
+
+11.10
+
+code and test
+write repository / code outline
+
+12.10
+
+release
+submit assignment
+
+16.10
+
+present solution
+
