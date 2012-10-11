@@ -7,22 +7,25 @@ require_relative 'move'
 
 module Gapbammon
   class Board
-    def initialize
+    def initialize(stones=nil)
       @dice = Die.new
-      @stones = []
-      5.times do
-        @stones << Stone.new('black',19)
-        @stones << Stone.new('black',12)
-        @stones << Stone.new('red',13)
-        @stones << Stone.new('red',6)
-      end
-      3.times do
-        @stones << Stone.new('black',17)
-        @stones << Stone.new('red',8)
-      end
-      2.times do
-        @stones << Stone.new('black',1)
-        @stones << Stone.new('red',24)
+      @stones = stones
+      if @stones.nil?
+        @stones = []
+        5.times do
+          @stones << Stone.new('black',19)
+          @stones << Stone.new('black',12)
+          @stones << Stone.new('red',13)
+          @stones << Stone.new('red',6)
+        end
+        3.times do
+          @stones << Stone.new('black',17)
+          @stones << Stone.new('red',8)
+        end
+        2.times do
+          @stones << Stone.new('black',1)
+          @stones << Stone.new('red',24)
+        end
       end
     end
 
@@ -31,8 +34,14 @@ module Gapbammon
       rolls *= 2 if rolls.first == rolls.last
       rolls.each do |roll|
         roll = -roll if player.color == 'red'
-        @stones.select{|stone| stone.color == player.color}.each do |stone|
-          move = Move.new(player, stone.position, roll)
+        barred = bar(player.color)
+        if barred.empty?
+          @stones.select{|stone| stone.color == player.color}.each do |stone|
+            move = Move.new(player, stone.position, roll)
+            moves << move if valid? move
+          end
+        else
+          move = Move.new(player, barred.first.position, roll)
           moves << move if valid? move
         end
       end
@@ -48,8 +57,13 @@ module Gapbammon
       @stones.select { |stone| stone.position == pos }
     end
 
+    def bar(color)
+      @stones.select { |s| s.color == color and s.position == (color == 'red' ? 25 : 0) }
+    end
+
     def valid?(move)
       stones = stones_on(move.new_pos)
+      return false unless (1..24).include? move.new_pos
       return true if stones.empty?
       return true if stones.count == 1
       return true if stones.first.color == move.player.color
