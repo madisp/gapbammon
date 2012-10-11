@@ -1,7 +1,7 @@
 require "gapbammon/version"
 
-require 'board'
-
+require_relative 'board'
+require 'colored'
 require 'highline'
 
 module Gapbammon
@@ -17,7 +17,7 @@ module Gapbammon
 
       colors = ['red', 'black']
       2.times do |i|
-        p = hl.ask("Player #{i+1} name? ") { |q| q.default = "Player #{i+1}" }
+        p = @hl.ask("Player #{i+1} name? ") { |q| q.default = "Player #{i+1}" }
         players << Player.new(p, colors[i])
       end
 
@@ -75,7 +75,7 @@ module Gapbammon
         else
           puts "Valid moves:"
           puts (0...valid_moves.count).to_a.map{|i| "#{(i+1).to_s.bold}: #{valid_moves[i]}"}.join("\n")
-          index =  hl.ask("Your move? ", Integer) { |q| q.in = (1..valid_moves.count) }
+          index = @hl.ask("Your move? ", Integer) { |q| q.in = (1..valid_moves.count) }
           move = valid_moves[index-1]
           b.make! move
           roll.delete_at(roll.index move.roll)
@@ -87,7 +87,7 @@ module Gapbammon
       else
         @player = players[0]
       end
-      turn
+      turn unless over?
     end
 
     def over?
@@ -102,7 +102,7 @@ module Gapbammon
       players.last
     end
 
-    def winner?
+    def winner
       raise "hold yer horses!" unless over?
       if board.out('red') == 15
         "red"

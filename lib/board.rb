@@ -1,5 +1,6 @@
 require "gapbammon/version"
 
+require 'colored'
 require_relative 'die'
 require_relative 'stone'
 require_relative 'player'

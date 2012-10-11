@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'colored'
+require 'game'
 
-puts "Hello world!".red
+include Gapbammon
+
+g = Game.new
+puts "Game over. #{g.winner.capitalize} wins!"
