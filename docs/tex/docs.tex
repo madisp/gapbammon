@@ -1,9 +1,107 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[11pt]{article}
 \usepackage[estonian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{enumerate}
+\usepackage{graphicx}
+
+\title{\textbf{GapBammon}}
+\author{Madis Pink\\
+		Mikk Pavelson\\
+		Uku Loskit\\
+		Lauris Kruusamäe}
+\date{}
 \begin{document}
+
+\maketitle
+
+\section{Project Schedule}
+\textbf{08.10}
+\begin{enumerate}[1]
+\item Write schedule
+\item Acquire domain knowledge (backgammon rules and playing experience)
+\item Storyboard
+\item Write project requirements and aims
+\item Infrastructure setup
+\end{enumerate}
+\textbf{09.10}
+\begin{enumerate}[1]
+\item Create class diagram
+\item Write code
+\end{enumerate}
+\textbf{11.10}
+\begin{enumerate}[1]
+\item Write code
+\item Test
+\item Write repository / code outline
+\item Documentation cleanup
+\end{enumerate}
+\textbf{12.10}
+\begin{enumerate}[1]
+\item Release
+\item Submit assignment
+\end{enumerate}
+
+\newpage
+\section{Storyboard}
+
+\textbf{Background}
+
+John and Miles are long-time friends and want to play backgammon together. Unfortunately they both live in different parts of the city and have access to a teletype terminal. So, they turn to GapBammon...
+
+\begin{enumerate}[I]
+\item John and Miles start a game of CLI backgammon by running a command in a terminal. John inputs his name first and becomes player1, Miles is upset because he is forced to be player2. Miles enters his name.
+	
+GapBammon rolls the dice for both players, John rolls a 6, Miles rolls a measly 2. This means that John is better again and gets to go first. 
+
+\begin{figure}
+\includegraphics{/home/lauris/Pictures/CartoonCamera.jpg}
+\end{figure}
+\item
+\end{enumerate}
+
+% Requirements
+\begin{enumerate}[I]
+\item the application should not take longer than a second to process user input and display the results
+
+\item the application should run on all operation systems that ruby 1.9.3 supports
+\item the application must not crash on more than 1% user inputs
+\item the application must be packaged as a ruby gem
+
+Functional requirements
+
+application
+\item on startup the game should ask for both players' names
+\item the game must have a command-line interface
+\item the game must declare a victor when a game has ended
+\item the game must offer an option for rematch after the game has ended
+game rules
+\item the game must randomly roll the dice to determine the starting player
+\item the game must support all standard backgammon rules
+\item the game must have a backgammon board with two rows of triangles in alternating color and each triangle is numbered 1-24 starting with the lower-right triangle.
+\item the game must support representing stones of two colours - red and black
+\item the game must start with a standard backgammon layout:
+
+\item 2 red stones on triangle 1
+\item 5 red stones on triangle 12
+\item 3 red stones on triangle 17
+\item 5 red stones on triangle 19
+\item 2 black stones on triangle 24
+\item 5 black stones on triangle 13
+\item 3 black stones on triangle 8
+\item 5 black stones on triangle 6
+
+\item the game must roll the dice for the player when it is player's turn.
+\item valid moves are determined by the player's dice roll according to backgammon rules.
+
+user interface
+\item the user must see the following information at the beginning of his/her turn:
+
+\item the current board and stones layout
+\item the outcome of the random dice roll
+\item the list of valid moves for the player
+
+\item the user must be able to input two positive integers in the form of "<triangle> <steps>" to move the topmost stone on the specified triangle by the specified amount of moves
+\item the game must print out the declared victor when the game ends
+\end{enumerate}
 
 \end{document}
