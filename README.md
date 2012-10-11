@@ -1,24 +1,33 @@
-# Gapbammon
+# GapBammon
 
-TODO: Write a gem description
+A two-player hotseat backgammon with a terminal interface.
+A student project at Tartu University.
+
+Uku Loskit
+Lauris Kruusamäe
+Mikk Pavelson
+Madis Pink
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Installation requires a modern ruby (1.9.3) installation with both rubygems
+and the bundler gem installed (gem install bundler).
 
-    gem 'gapbammon'
+Clone the repository:
 
-And then execute:
+  git clone git@github.com:madisp/gapbammon.git
 
-    $ bundle
+Install dependencies:
 
-Or install it yourself as:
+  bundle install
 
-    $ gem install gapbammon
+Install the application as a gem
+
+  bundle exec rake install
 
 ## Usage
 
-TODO: Write usage instructions here
+  After installing the gem `backgammon` should be on your path.
 
 ## Contributing
 
