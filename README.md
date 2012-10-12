@@ -3,10 +3,10 @@
 A two-player hotseat backgammon with a terminal interface.
 A student project at Tartu University.
 
-Uku Loskit
-Lauris Kruusamäe
-Mikk Pavelson
-Madis Pink
+Uku Loskit  
+Lauris Kruusamäe  
+Mikk Pavelson  
+Madis Pink  
 
 ## Installation
 
@@ -51,6 +51,6 @@ After installing the gem `backgammon` should be on your path.
 
 ## Course
 
-Data Modeling
-University of Tartu
+Data Modeling  
+University of Tartu  
 Tartu 2012
