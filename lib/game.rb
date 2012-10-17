@@ -7,6 +7,7 @@ require 'highline'
 module Gapbammon
   class Game
     attr_accessor :players
+    attr_accessor :board
 
     def initialize
       @players = []
@@ -91,7 +92,7 @@ module Gapbammon
     end
 
     def over?
-       board.out('red') == 15 or board.out('black') == 15
+       @board.out('red') == 15 or board.out('black') == 15
     end
 
     def p1
